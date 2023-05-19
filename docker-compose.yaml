@@ -33,5 +33,5 @@ services:
       - .env
 
 volumes:
+  server:
   mysql:
-    name: mysql
