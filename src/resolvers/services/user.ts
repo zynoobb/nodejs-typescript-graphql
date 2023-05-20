@@ -10,6 +10,10 @@ export class UserService {
     return database.user.findFirst({ where: { email } });
   }
 
+  async findOneById(id: string): Promise<User> {
+    return database.user.findFirst({ where: { id } });
+  }
+
   async createUser(createUserInput: ICreateUserArgs): Promise<User> {
     const { password, email } = createUserInput;
 
