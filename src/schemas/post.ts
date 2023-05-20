@@ -7,7 +7,8 @@ const typeDefs = gql`
     title: String
     content: String
     createAt: String
-    authorId: User!
+    authorId: String
+    user: User
     comments: [comment]
   }
 
