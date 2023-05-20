@@ -1,7 +1,9 @@
 import { User } from "@prisma/client";
-import database from "../config";
 import { pagination } from "./interfaces/common/common.interfaces";
-import { createUserInput } from "./interfaces/user/user-service.interface";
+import {
+  createUserInput,
+  IUserServiceFetchUser,
+} from "./interfaces/user/user-service.interface";
 import { UserService } from "./services/user";
 
 class UserResolver {
@@ -23,6 +25,14 @@ class UserResolver {
     }
   }
 
+  fetchUser(_, { id }: { id: IUserServiceFetchUser }): Promise<User> {
+    try {
+      return this.userService.fetchUser(id);
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
   fetchUsers(_, { pagination }: { pagination: pagination }): Promise<User[]> {
     try {
       return this.userService.fetchUsers(pagination);
@@ -35,6 +45,7 @@ const userResolver = new UserResolver();
 
 const resolvers = {
   Query: {
+    fetchUser: (_, args) => userResolver.fetchUser(_, args),
     fetchUsers: (_, args) => userResolver.fetchUsers(_, args),
   },
   Mutation: {

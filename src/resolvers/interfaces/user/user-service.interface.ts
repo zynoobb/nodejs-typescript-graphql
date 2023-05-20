@@ -9,3 +9,7 @@ export interface createUserInput {
 export interface IUserServiceFindOneByName {
   email: string;
 }
+
+export interface IUserServiceFetchUser {
+  id: string;
+}

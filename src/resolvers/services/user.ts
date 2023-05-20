@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { User } from "@prisma/client";
 import {
   IUserServiceCreateUser,
+  IUserServiceFetchUser,
   IUserServiceFindOneByName,
 } from "../interfaces/user/user-service.interface";
 import { pagination } from "../interfaces/common/common.interfaces";
@@ -29,6 +30,15 @@ export class UserService {
     });
 
     return user;
+  }
+
+  async fetchUser({ id }: IUserServiceFetchUser): Promise<User> {
+    return database.user.findFirst({
+      where: { id: id },
+      include: {
+        posts: true,
+      },
+    });
   }
 
   async fetchUsers(pagination: pagination): Promise<User[]> {
