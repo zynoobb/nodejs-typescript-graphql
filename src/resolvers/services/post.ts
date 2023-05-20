@@ -53,6 +53,9 @@ export class PostService {
         user: true,
         comments: true,
       },
+      orderBy: {
+        createAt: "desc",
+      },
     });
 
     const [start, end] = getPagination(pagination);

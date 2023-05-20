@@ -60,6 +60,9 @@ export class UserService {
           },
         },
       },
+      orderBy: {
+        createAt: "desc",
+      },
     });
 
     const filterUsers = users.filter((user) => user.posts.length !== 0);
