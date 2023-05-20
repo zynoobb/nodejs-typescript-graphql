@@ -2,7 +2,7 @@ import { User } from "@prisma/client";
 import { pagination } from "../common/interfaces/common.interfaces";
 import { ICreateUserArgs } from "./interfaces/user-service.interface";
 import { UserService } from "./services/user";
-
+import { GraphQLDateTime } from "graphql-scalars";
 class UserResolver {
   private userService: UserService;
 
@@ -41,6 +41,7 @@ class UserResolver {
 const userResolver = new UserResolver();
 
 const resolvers = {
+  DateTime: GraphQLDateTime,
   Query: {
     fetchUser: (_, args) => userResolver.fetchUser(_, args),
     fetchUsers: (_, args) => userResolver.fetchUsers(_, args),

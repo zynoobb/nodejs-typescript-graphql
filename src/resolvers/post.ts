@@ -2,7 +2,7 @@ import { Post } from "@prisma/client";
 import { pagination } from "../common/interfaces/common.interfaces";
 import { ICreatePostArgs } from "./interfaces/post-service.interface";
 import { PostService } from "./services/post";
-
+import { GraphQLDateTime } from "graphql-scalars";
 class PostResolver {
   private postService: PostService;
 
@@ -43,6 +43,7 @@ class PostResolver {
 const postResolver = new PostResolver();
 
 const resolvers = {
+  DateTime: GraphQLDateTime,
   Query: {
     fetchPost: (_, args) => postResolver.fetchPost(_, args),
     fetchPosts: (_, args) => postResolver.fetchPosts(_, args),

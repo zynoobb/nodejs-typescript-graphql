@@ -2,11 +2,13 @@ import { gql } from "apollo-server";
 import postTypeDefs from "./post";
 
 const typeDefs = gql`
+  scalar DateTime
+
   type User {
     id: String
     name: String
     email: String
-    createAt: String
+    createAt: DateTime
     posts: [Post]
   }
 

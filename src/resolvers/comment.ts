@@ -1,5 +1,6 @@
 import { Comment } from "@prisma/client";
 import { CommentService } from "./services/comment";
+import { GraphQLDateTime } from "graphql-scalars";
 
 class CommentResolver {
   private commentService: CommentService;
@@ -19,6 +20,7 @@ class CommentResolver {
 const commentResolver = new CommentResolver();
 
 const resolver = {
+  DateTime: GraphQLDateTime,
   Mutation: {
     createComment: (_, args) => commentResolver.createComment(_, args),
   },

@@ -15,7 +15,7 @@ model User {
   email String @db.VarChar(100)
   password String
   name String @db.VarChar(30)
-  createAt DateTime @default(now())
+  createAt DateTime @default(dbgenerated("NOW()")) @db.DateTime
   posts Post[]
 }
 
@@ -24,7 +24,7 @@ model Post {
   title String @db.VarChar(100)
   content String @db.LongText
   published Boolean @default(true)
-  createAt DateTime @default(now())
+  createAt DateTime @default(dbgenerated("NOW()")) @db.DateTime
   authorId String // FK
   user User @relation(fields: [authorId],references: [id])
   comments Comment[]
@@ -33,7 +33,7 @@ model Post {
 model Comment {
   id String @id @default(uuid())
   content String @db.LongText
-  createAt DateTime @default(now())
+  createAt DateTime @default(dbgenerated("NOW()")) @db.DateTime
 
   postId String // FK
   post Post @relation(fields: [postId], references: [id])

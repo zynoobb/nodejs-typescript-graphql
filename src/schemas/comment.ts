@@ -1,10 +1,12 @@
 import { gql } from "apollo-server";
 
 const typeDefs = gql`
+  scalar DateTime
+
   type comment {
     id: String
     content: String
-    createAt: String
+    createAt: DateTime
     postId: Post
   }
 

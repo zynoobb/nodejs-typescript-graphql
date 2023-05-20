@@ -2,11 +2,12 @@ import { gql } from "apollo-server";
 import commentTypeDefs from "./comment";
 
 const typeDefs = gql`
+  scalar DateTime
   type Post {
     id: String
     title: String
     content: String
-    createAt: String
+    createAt: DateTime
     authorId: String
     user: User
     comments: [comment]
