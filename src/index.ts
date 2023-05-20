@@ -3,6 +3,7 @@ import cors from "cors";
 import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./schemas";
 import { resolvers } from "./resolvers";
+import { ApolloServerPluginLandingPageGraphQLPlayground as playgroundPlugIn } from "apollo-server-core";
 
 const startServer = async () => {
   const app = express();
@@ -13,6 +14,7 @@ const startServer = async () => {
     typeDefs,
     resolvers,
     introspection: true,
+    plugins: [playgroundPlugIn()],
   });
 
   await server.start();
