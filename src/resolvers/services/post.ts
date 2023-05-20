@@ -38,7 +38,7 @@ export class PostService {
   }
 
   async fetchPost(id: string): Promise<Post> {
-    return database.post.findFirst({
+    return database.post.findUnique({
       where: { id },
       include: {
         user: true,

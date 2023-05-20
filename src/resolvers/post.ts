@@ -23,9 +23,9 @@ class PostResolver {
     }
   }
 
-  fetchPost(_, { id }: { id: string }): Promise<Post> {
+  fetchPost(_, { postId }: { postId: string }): Promise<Post> {
     try {
-      return this.postService.fetchPost(id);
+      return this.postService.fetchPost(postId);
     } catch (error) {
       throw new Error(error);
     }
