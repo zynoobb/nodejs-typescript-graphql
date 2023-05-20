@@ -20,8 +20,8 @@ async function main() {
       password: "default",
       posts: {
         create: {
-          title: "seed Post",
-          content: "seed graphql",
+          title: "title 1",
+          content: "includes rest-API",
           published: true,
         },
       },
@@ -34,12 +34,12 @@ async function main() {
     update: {},
     create: {
       authorId: userId,
-      title: "bold nine title",
-      content: "bold nine content",
+      title: "title 2",
+      content: "includes graphql",
       published: true,
       comments: {
         create: {
-          content: "bold nine comment",
+          content: "comment",
         },
       },
     },
