@@ -1,9 +1,6 @@
 import { User } from "@prisma/client";
 import { pagination } from "./interfaces/common/common.interfaces";
-import {
-  ICreateUserArgs,
-  IFetchUserArgs,
-} from "./interfaces/user/user-service.interface";
+import { ICreateUserArgs } from "./interfaces/user/user-service.interface";
 import { UserService } from "./services/user";
 
 class UserResolver {
@@ -25,7 +22,7 @@ class UserResolver {
     }
   }
 
-  fetchUser(_, { id }: { id: IFetchUserArgs }): Promise<User> {
+  fetchUser(_, { id }: { id: string }): Promise<User> {
     try {
       return this.userService.fetchUser(id);
     } catch (error) {

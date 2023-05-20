@@ -1,22 +1,18 @@
 import database from "../../config";
 import bcrypt from "bcrypt";
 import { User } from "@prisma/client";
-import {
-  ICreateUserArgs,
-  IFetchUserArgs,
-  IUserServiceFindOneByName,
-} from "../interfaces/user/user-service.interface";
+import { ICreateUserArgs } from "../interfaces/user/user-service.interface";
 import { pagination } from "../interfaces/common/common.interfaces";
 
 export class UserService {
-  async findOneByName({ email }: IUserServiceFindOneByName): Promise<User> {
+  async findOneByName(email: string): Promise<User> {
     return database.user.findFirst({ where: { email } });
   }
 
   async createUser(createUserInput: ICreateUserArgs): Promise<User> {
     const { password, email } = createUserInput;
 
-    const emailVerify = await this.findOneByName({ email });
+    const emailVerify = await this.findOneByName(email);
     if (emailVerify)
       throw { status: 409, message: "이미 존재하는 이메일입니다." };
 
@@ -32,9 +28,9 @@ export class UserService {
     return user;
   }
 
-  async fetchUser({ id }: IFetchUserArgs): Promise<User> {
+  async fetchUser(id: string): Promise<User> {
     return database.user.findFirst({
-      where: { id: id },
+      where: { id },
       include: {
         posts: true,
       },
