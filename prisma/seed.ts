@@ -21,7 +21,7 @@ async function main() {
       posts: {
         create: {
           title: "seed Post",
-          content: "seed Content",
+          content: "seed graphql",
           published: true,
         },
       },
