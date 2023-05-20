@@ -2,7 +2,7 @@ import { Post } from "@prisma/client";
 import database from "../../config";
 import { pagination } from "../../common/interfaces/common.interfaces";
 import { getPagination } from "../../common/util/pagination";
-import { ICreatePostArgs } from "../interfaces/post/post-service.interface";
+import { ICreatePostArgs } from "../interfaces/post-service.interface";
 import { UserService } from "./user";
 
 export class PostService {

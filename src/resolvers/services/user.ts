@@ -1,7 +1,7 @@
 import database from "../../config";
 import bcrypt from "bcrypt";
 import { User } from "@prisma/client";
-import { ICreateUserArgs } from "../interfaces/user/user-service.interface";
+import { ICreateUserArgs } from "../interfaces/user-service.interface";
 import { pagination } from "../../common/interfaces/common.interfaces";
 import { getPagination } from "../../common/util/pagination";
 

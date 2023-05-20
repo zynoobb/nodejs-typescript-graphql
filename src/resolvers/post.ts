@@ -1,6 +1,6 @@
 import { Post } from "@prisma/client";
 import { pagination } from "../common/interfaces/common.interfaces";
-import { ICreatePostArgs } from "./interfaces/post/post-service.interface";
+import { ICreatePostArgs } from "./interfaces/post-service.interface";
 import { PostService } from "./services/post";
 
 class PostResolver {
