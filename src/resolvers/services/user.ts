@@ -2,7 +2,8 @@ import database from "../../config";
 import bcrypt from "bcrypt";
 import { User } from "@prisma/client";
 import { ICreateUserArgs } from "../interfaces/user/user-service.interface";
-import { pagination } from "../interfaces/common/common.interfaces";
+import { pagination } from "../../common/interfaces/common.interfaces";
+import { getPagination } from "../../common/util/pagination";
 
 export class UserService {
   async findOneByName(email: string): Promise<User> {
@@ -59,14 +60,8 @@ export class UserService {
 
     const filterUsers = users.filter((user) => user.posts.length !== 0);
 
-    // pagination 기본값은 page = 1 / limit = 5
-    let { page, limit } = pagination;
-    if (!page && !limit) {
-      page = 1;
-      limit = 5;
-    }
-
-    const [start, end] = [(page - 1) & limit, limit * page];
+    // getPagination 페이지를 분할하여 유저들 데이터를 반환하기 위한 함수입니다.
+    const [start, end] = getPagination(pagination);
 
     return filterUsers.slice(start, end);
   }

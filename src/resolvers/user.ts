@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import { pagination } from "./interfaces/common/common.interfaces";
+import { pagination } from "../common/interfaces/common.interfaces";
 import { ICreateUserArgs } from "./interfaces/user/user-service.interface";
 import { UserService } from "./services/user";
 
