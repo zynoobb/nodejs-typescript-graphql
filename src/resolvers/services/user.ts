@@ -2,10 +2,10 @@ import database from "../../config";
 import bcrypt from "bcrypt";
 import { User } from "@prisma/client";
 import {
-  createUserInput,
   IUserServiceCreateUser,
   IUserServiceFindOneByName,
 } from "../interfaces/user/user-service.interface";
+import { pagination } from "../interfaces/common/common.interfaces";
 
 export class UserService {
   async findOneByName({ email }: IUserServiceFindOneByName): Promise<User> {
@@ -29,5 +29,39 @@ export class UserService {
     });
 
     return user;
+  }
+
+  async fetchUsers(pagination: pagination): Promise<User[]> {
+    const users = await database.user.findMany({
+      include: {
+        posts: {
+          where: {
+            AND: [
+              {
+                content: {
+                  contains: "graphql",
+                },
+              },
+              {
+                published: true,
+              },
+            ],
+          },
+        },
+      },
+    });
+
+    const filterUsers = users.filter((user) => user.posts.length !== 0);
+
+    // pagination 기본값은 page = 1 / limit = 5
+    let { page, limit } = pagination;
+    if (!page && !limit) {
+      page = 1;
+      limit = 5;
+    }
+
+    const [start, end] = [(page - 1) & limit, limit * page];
+
+    return filterUsers.slice(start, end);
   }
 }

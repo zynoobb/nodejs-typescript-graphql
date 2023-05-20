@@ -11,7 +11,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    fetchUsers: [User]
+    fetchUsers(pagination: pagination): [User]
     fetchUser(id: String): User
   }
 
@@ -25,6 +25,10 @@ const typeDefs = gql`
     password: String!
   }
 
+  input pagination {
+    page: Int
+    limit: Int
+  }
   # post type을 가져오기 위한 리터럴
   ${postTypeDefs}
 `;
