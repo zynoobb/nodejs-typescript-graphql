@@ -10,8 +10,6 @@ const typeDefs = gql`
     posts: [Post]
   }
 
-  ${postTypeDefs}
-
   type Query {
     fetchUsers: [User]
     fetchUser(id: String): User
@@ -26,6 +24,9 @@ const typeDefs = gql`
     email: String!
     password: String!
   }
+
+  # post type을 가져오기 위한 리터럴
+  ${postTypeDefs}
 `;
 
 export default typeDefs;

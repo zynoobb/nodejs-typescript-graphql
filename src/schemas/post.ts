@@ -11,8 +11,6 @@ const typeDefs = gql`
     comments: [comment]
   }
 
-  ${commentTypeDefs}
-
   type Query {
     fetchPosts: [Post]
     fetchPost(postId: String): Post
@@ -26,6 +24,9 @@ const typeDefs = gql`
     title: String
     content: String
   }
+
+  # 코멘트 type을 가져오기 위한 리터럴
+  ${commentTypeDefs}
 `;
 
 export default typeDefs;
