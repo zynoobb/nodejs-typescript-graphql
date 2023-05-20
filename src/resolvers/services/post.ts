@@ -10,8 +10,15 @@ export class PostService {
   constructor() {
     this.userService = new UserService();
   }
+  checkEmpty(text: string): void {
+    if (text.trim() === "")
+      throw { status: 400, message: "공백은 입력할 수 없습니다." };
+  }
 
-  async createPost(authorId, createPostInput: ICreatePostArgs): Promise<Post> {
+  async createPost(
+    authorId: string,
+    createPostInput: ICreatePostArgs
+  ): Promise<Post> {
     const { title, content } = createPostInput;
     const user = await this.userService.findOneById(authorId);
     if (!user) throw { status: 404, message: "유저가 존재하지 않습니다." };
@@ -52,8 +59,7 @@ export class PostService {
     return posts.slice(start, end);
   }
 
-  checkEmpty(text: string): void {
-    if (text.trim() === "")
-      throw { status: 400, message: "공백은 입력할 수 없습니다." };
+  async findOneByPostId(id: string): Promise<Post> {
+    return database.post.findFirst({ where: { id } });
   }
 }
