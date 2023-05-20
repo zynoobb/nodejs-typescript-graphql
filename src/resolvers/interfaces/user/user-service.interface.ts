@@ -1,6 +1,4 @@
-export type IUserServiceCreateUser = createUserInput;
-
-export interface createUserInput {
+export interface ICreateUserArgs {
   name: string;
   password: string;
   email: string;
@@ -10,6 +8,6 @@ export interface IUserServiceFindOneByName {
   email: string;
 }
 
-export interface IUserServiceFetchUser {
+export interface IFetchUserArgs {
   id: string;
 }

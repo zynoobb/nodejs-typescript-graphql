@@ -1,8 +1,8 @@
 import { User } from "@prisma/client";
 import { pagination } from "./interfaces/common/common.interfaces";
 import {
-  createUserInput,
-  IUserServiceFetchUser,
+  ICreateUserArgs,
+  IFetchUserArgs,
 } from "./interfaces/user/user-service.interface";
 import { UserService } from "./services/user";
 
@@ -16,7 +16,7 @@ class UserResolver {
   // 더 깔끔하게 하는 방법이 있을까 고민하기
   async createUser(
     _,
-    { createUserInput }: { createUserInput: createUserInput }
+    { createUserInput }: { createUserInput: ICreateUserArgs }
   ): Promise<User> {
     try {
       return this.userService.createUser(createUserInput);
@@ -25,7 +25,7 @@ class UserResolver {
     }
   }
 
-  fetchUser(_, { id }: { id: IUserServiceFetchUser }): Promise<User> {
+  fetchUser(_, { id }: { id: IFetchUserArgs }): Promise<User> {
     try {
       return this.userService.fetchUser(id);
     } catch (error) {

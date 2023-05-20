@@ -2,8 +2,8 @@ import database from "../../config";
 import bcrypt from "bcrypt";
 import { User } from "@prisma/client";
 import {
-  IUserServiceCreateUser,
-  IUserServiceFetchUser,
+  ICreateUserArgs,
+  IFetchUserArgs,
   IUserServiceFindOneByName,
 } from "../interfaces/user/user-service.interface";
 import { pagination } from "../interfaces/common/common.interfaces";
@@ -13,7 +13,7 @@ export class UserService {
     return database.user.findFirst({ where: { email } });
   }
 
-  async createUser(createUserInput: IUserServiceCreateUser): Promise<User> {
+  async createUser(createUserInput: ICreateUserArgs): Promise<User> {
     const { password, email } = createUserInput;
 
     const emailVerify = await this.findOneByName({ email });
@@ -32,7 +32,7 @@ export class UserService {
     return user;
   }
 
-  async fetchUser({ id }: IUserServiceFetchUser): Promise<User> {
+  async fetchUser({ id }: IFetchUserArgs): Promise<User> {
     return database.user.findFirst({
       where: { id: id },
       include: {
