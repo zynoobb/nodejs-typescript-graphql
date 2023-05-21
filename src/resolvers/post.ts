@@ -4,7 +4,7 @@ import { ICreatePostArgs } from "./interfaces/post-service.interface";
 import { PostService } from "./services/post";
 import { GraphQLDateTime } from "graphql-scalars";
 class PostResolver {
-  private postService: PostService;
+  private readonly postService: PostService;
 
   constructor() {
     this.postService = new PostService();

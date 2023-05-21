@@ -4,7 +4,7 @@ import { ICreateUserArgs } from "./interfaces/user-service.interface";
 import { UserService } from "./services/user";
 import { GraphQLDateTime } from "graphql-scalars";
 class UserResolver {
-  private userService: UserService;
+  private readonly userService: UserService;
 
   constructor() {
     this.userService = new UserService();

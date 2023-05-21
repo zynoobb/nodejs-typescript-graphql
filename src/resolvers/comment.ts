@@ -3,7 +3,7 @@ import { CommentService } from "./services/comment";
 import { GraphQLDateTime } from "graphql-scalars";
 
 class CommentResolver {
-  private commentService: CommentService;
+  private readonly commentService: CommentService;
 
   constructor() {
     this.commentService = new CommentService();
