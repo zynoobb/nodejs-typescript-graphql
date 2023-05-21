@@ -52,8 +52,9 @@ docker-compose run server yarn prisma db seed
 │   ├── common/
 │   │   ├── interfaces/
 │   │   │   └── common.interfaces.ts
-│   │   └── util/
-│   │       └── pagination.ts
+│   │   ├── util/
+│   │   │   └── pagination.ts
+│   │   └── prismaJest.ts
 │   ├── resolvers/
 │   │   ├── user.ts
 │   │   ├── post.ts
@@ -62,9 +63,11 @@ docker-compose run server yarn prisma db seed
 │   │   │   ├── user.ts
 │   │   │   ├── post.ts
 │   │   │   └── comment.ts
-│   │   └── interfaces/
-│   │       ├── post-service.interface.ts
-│   │       └── user-service.interface.ts
+│   │   ├── interfaces/
+│   │   │   ├── post-service.interface.ts
+│   │   │   └── user-service.interface.ts
+│   │   └── test/
+│   │       └── user.spec.ts
 │   ├── schemas/
 │   │   ├── index.ts
 │   │   ├── user.ts
@@ -77,6 +80,7 @@ docker-compose run server yarn prisma db seed
 ├── .gitignore
 ├── docker-compose.yaml
 ├── Dockerfile
+├── jest.config.ts
 ├── package.json
 ├── README.md
 ├── tsconfig.json
