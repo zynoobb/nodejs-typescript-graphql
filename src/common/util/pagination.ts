@@ -7,7 +7,7 @@ export function getPagination(pagination: pagination): number[] {
     limit = 5;
   }
 
-  const [start, end] = [(page - 1) & limit, limit * page];
+  const [start, end] = [(page - 1) * limit, limit * page];
 
   return [start, end];
 }
