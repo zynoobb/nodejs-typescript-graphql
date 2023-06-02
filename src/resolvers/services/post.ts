@@ -47,7 +47,7 @@ export class PostService {
     });
   }
 
-  async fetchPosts(pagination: pagination) {
+  async fetchPosts(pagination: pagination): Promise<Post[]> {
     const posts = await database.post.findMany({
       include: {
         user: true,
