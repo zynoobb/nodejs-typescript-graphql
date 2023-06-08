@@ -19,7 +19,7 @@
 ### **env 내용**
 
 ```
-DATABASE_URL=mysql://{id}:{password}@mysql:3306/bold9
+DATABASE_URL=mysql://{id}:{password}@mysql:3306/mysqldb
 ```
 
 <br><br>

@@ -13,7 +13,7 @@ services:
       - mysql:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_DATABASE: bold9
+      MYSQL_DATABASE: mysqldb
       MYSQL_ROOT_PASSWORD: root
       TZ: "Asia/Seoul"
 
